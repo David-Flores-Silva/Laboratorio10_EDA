@@ -1,4 +1,5 @@
 public class ewliminacion{
+
   private NodoAVL eliminacionAVL(NodoAVL nodoActual, int key) {
     if(nodoActual == null){
       return nodoActual;
@@ -28,6 +29,7 @@ public class ewliminacion{
         nodoActual.left = eliminarAVL(nodoActual.left, temp.key);
       }
     }
-
   }
+
+
 }
