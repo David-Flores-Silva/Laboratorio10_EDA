@@ -165,7 +165,10 @@ public class AVL<E extends Comparable<E>> {
 	}
 	
 	
-
+	public void delete(E x)  throws ItemDuplicated {
+		this.height = false;
+		this.root = delete(this.root, x);
+	}
 	
 	public Node delete(Node node, E data) {
 		
