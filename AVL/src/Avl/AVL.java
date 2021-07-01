@@ -26,7 +26,7 @@ public class AVL<E extends Comparable<E>> {
 		this.root = insert(x, this.root);
 	}
 	
-	protected Node insert(E x, Node node)throws ItemDuplicated{
+	protected Node insert(E x, Node node) throws ItemDuplicated{
 		Node res = node;
 		if (node == null) {
 			this.height = true;
