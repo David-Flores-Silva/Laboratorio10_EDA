@@ -2,48 +2,27 @@ package Avl;
 
 public class App {
 	public static void main(String [] args) throws ItemDuplicated {
-		AVL<Integer> arbol = new AVL<Integer>();		
-		arbol.insert(44);
-		arbol.insert(70);
-		arbol.insert(30);
-		arbol.insert(2);
-		arbol.insert(72);
-		arbol.insert(26);
-		arbol.insert(81);
-		arbol.insert(55);	
-		arbol.inOrden();
+		AVL<Integer> arbol = new AVL<Integer>();	
+		int [] a = {44, 70, 30, 2 , 72, 26, 81,55}; 
+		insertar(arbol, a);
 		
 		AVL<Integer> arbol2 = new AVL<Integer>();
-		arbol2.insert(80);
-		arbol2.insert(95);
-		arbol2.insert(66);
-		arbol2.insert(70);
-		arbol2.insert(98);
-		arbol2.insert(67);
-		arbol2.inOrden();
+		int [] b = {80, 95, 66, 70, 98, 67};
+		insertar(arbol2, b);
 		
 		AVL<Integer> arbol3 = new AVL<Integer>();
-		arbol3.insert(80);
-		arbol3.insert(40);
-		arbol3.insert(60);
-		arbol3.insert(120);
-		arbol3.insert(100);
-		arbol3.insert(30);
-		arbol3.insert(130);
-		arbol3.insert(140);
-		arbol3.insert(125);
-		arbol3.insert(150);
-		arbol3.insert(20);
-		arbol3.insert(15);
-		arbol3.inOrden();
+		int [] c = {80,40,60,120,100,30,130,140,125,150,20,15};
+		insertar(arbol3, c);
 		
 		AVL<Integer> arbol4 = new AVL<Integer>();
-		arbol4.insert(14);
-		arbol4.insert(1);
-		arbol4.insert(6);
-		arbol4.insert(17);
-		arbol4.insert(8);
-		arbol4.insert(9);
-		arbol4.inOrden();
+		int [] d = {14, 1, 6, 17, 8, 9};
+		insertar(arbol4, d);
+	}
+	
+	public static void insertar(AVL<Integer> tree, int [] arr) throws ItemDuplicated {
+		for(int i=0; i<arr.length; i++) {
+			tree.insert(arr[i]);
+		}
+		tree.inOrden();
 	}
 }
