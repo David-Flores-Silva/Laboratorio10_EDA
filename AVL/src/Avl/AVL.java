@@ -240,7 +240,7 @@ public class AVL<E extends Comparable<E>> {
 	
 	
 }
-
+//https://www.youtube.com/watch?v=sezWC_pplHc -- apoyo del delete
 
 
 
