@@ -47,14 +47,23 @@ public class AVL<E extends Comparable<E>> {
 						break;
 					case 1: res = balanceToLeft(res);
 						this.height = false;
-
 						break;
 					}
 			}
 			else { 
 				res.left = insert(x, node.left);
-				//completar
-			
+				if(this.height)
+					switch(res.bf) {
+					case 1: res.bf = 0;
+						this.height = false;
+						break;
+					case 0: res.bf = 1;
+						this.height = true;
+						break;
+					case -1: res = balanceToRight(res);
+						this.height = false;
+						break;
+					}
 			}
 		}
 		return res;
@@ -71,10 +80,9 @@ public class AVL<E extends Comparable<E>> {
 		case 1:
 			Node nieto = hijo.right;
 			switch(nieto.bf) {
-			case 1: node.bf = 0;hijo.bf = 1; break;
-			case 0: node.bf = 0; hijo.bf = 0; break;
-			case -1: node.bf = -1; hijo.bf = 0; break;
-			
+				case 1: node.bf = 0;hijo.bf = 1; break;
+				case 0: node.bf = 0; hijo.bf = 0; break;
+				case -1: node.bf = -1; hijo.bf = 0; break;	
 			}
 			nieto.bf =0;
 			
