@@ -17,6 +17,9 @@ public class App {
 		AVL<Integer> arbol4 = new AVL<Integer>();
 		int [] d = {14, 1, 6, 17, 8, 9};
 		insertar(arbol4, d);
+		
+		arbol4.delete(6);
+		arbol4.inOrden();
 	}
 	
 	public static void insertar(AVL<Integer> tree, int [] arr) throws ItemDuplicated {
