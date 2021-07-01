@@ -150,6 +150,11 @@ public class AVL<E extends Comparable<E>> {
 		System.out.print(actual.data.toString()+"/"+actual.bf+", ");
 		if (actual.right != null) inOrden(actual.right);
 	}
+	
+	
+	public void delete(E elem) {
+		
+	}
 }
 
 
