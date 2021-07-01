@@ -14,12 +14,13 @@ public class App {
 		int [] c = {80,40,60,120,100,30,130,140,125,150,20,15};
 		insertar(arbol3, c);
 		
+		arbol3.delete(100);
+		arbol3.inOrden();
+		
+		
 		AVL<Integer> arbol4 = new AVL<Integer>();
 		int [] d = {14, 1, 6, 17, 8, 9};
-		insertar(arbol4, d);
-		
-		arbol4.delete(6);
-		arbol4.inOrden();
+		insertar(arbol4, d);		
 	}
 	
 	public static void insertar(AVL<Integer> tree, int [] arr) throws ItemDuplicated {
