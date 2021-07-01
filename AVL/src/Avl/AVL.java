@@ -2,7 +2,7 @@ package Avl;
 
 public class AVL<E extends Comparable<E>> {
 	class Node {
-		protected E data;
+		public E data;
 		protected Node left, right;
 		protected int bf;	
 		public Node(E data) {
@@ -14,6 +14,7 @@ public class AVL<E extends Comparable<E>> {
 			this.right = right;
 			this.bf = 0;
 		}
+		
 	}
 	
 	private Node root;
@@ -152,9 +153,92 @@ public class AVL<E extends Comparable<E>> {
 	}
 	
 	
-	public void delete(E elem) {
+
+	
+	public Node delete(Node node, E data) {
 		
+		if(node == null) {
+			return node;
+		}
+		int da1 = (int)data;
+		int da2 = (int)node.getData();
+		
+		if(da1 < da2) {
+			node.setLeft(delete(node.left, data));
+		}else if(da1 > da2) {
+			node.setRight(delete(node.right, data));
+		}else {
+			if(node.left == null && node.right == null) {
+				System.out.println("removing a leaf node ... ");
+				return null;
+			}
+			
+			if(node.left == null) {
+				System.out.println("msm 2");
+				Node tempNode = node.right;
+				node = null;
+				return tempNode;
+			} else if(node.right == null) {
+				System.out.println("msm 3");
+				Node tempNode = node.left;
+				node = null;
+				return tempNode;
+			}
+			
+			System.out.println(" removing ...");
+			Node tempNode = getPredecessor(node.left);
+			
+			node.setData(tempNode.getData());
+			node.setLeft(delete(node.left, tempNode.getData()));
+		}
+		
+		//node.setHeight(Math.max(height(node.left), height(node.right) +1 ));
+		return settleDeletion(node);
 	}
+	
+	private Node settleDeletion(Node node) {
+		int balance = getBalance(node);
+		if(balance > 1) {
+			if(getBalance(node.left) < 0) {
+				node.setLeft(rotateSL(node.left));
+			}
+			return rotateSR(node);
+		}
+		
+		if(balance < -1) {
+			if(getBalance(node.right) > 0) {
+				node.setRight(rotateSR(node.right));
+			}
+			return rotateSL(node);
+		}
+		return node;
+	}
+	
+	private int height(Node node) {
+		if(node== null) {
+			return -1;
+		}
+		return 0;
+		//return node.getHeight();
+	}
+	
+	private int getBalance(Node node) {
+		if(node == null) {
+			return 0;
+		}
+		return height(node.left) - height(node.right);
+	}
+	
+	private Node getPredecessor(Node node) {
+		Node predecessor = node;
+		while(predecessor.right != null) {
+			predecessor = predecessor.right;
+		}
+		return predecessor;
+	}
+	
+	
+	
 }
 
 
