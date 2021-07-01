@@ -15,6 +15,18 @@ public class AVL<E extends Comparable<E>> {
 			this.bf = 0;
 		}
 		
+		public void setLeft(Node nodeL) {
+			this.left = nodeL;
+		}
+		public void setRight(Node nodeR) {
+			this.right = nodeR;
+		}
+		public void setData(E dat) {
+			this.data = dat;
+		}
+		public E getData() {
+			return this.data;
+		}
 	}
 	
 	private Node root;
